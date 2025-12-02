@@ -579,7 +579,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             try {
                 let chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
                 const payload = { contents: chatHistory };
-                const apiKey = ""; 
+                const apiKey = "AIzaSyCs9gRtNgxyA3bXhO_YVaC_oNPfjqnzKb4"; 
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                 
                 const response = await fetch(apiUrl, {
@@ -710,4 +710,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </body>
 
 </html>
+
 
