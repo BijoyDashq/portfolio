@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet" />
     
-    <!-- Custom Styles & Configurations -->
     <style>
         /* Custom styles to complement Tailwind */
         body {
@@ -45,7 +44,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border-color: #38bdf8; /* sky-500 */
         }
-        /* Animation for elements fading in on scroll */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -55,7 +53,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Testimonial slider styles */
         .testimonial-slider {
             display: flex;
             transition: transform 0.5s ease-in-out;
@@ -64,7 +61,6 @@
             min-width: 100%;
             box-sizing: border-box;
         }
-        /* Modal Styles */
         .modal-overlay {
             @apply fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-[999];
             transition: opacity 0.3s ease-in-out;
@@ -72,7 +68,6 @@
         .modal-content {
             @apply bg-gray-900 border border-sky-500/30 rounded-2xl shadow-2xl shadow-sky-500/10 p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto;
         }
-        /* Gallery Modal Styles */
         #gallery-modal-content {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
@@ -80,9 +75,27 @@
             padding: 1rem;
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
-        /* Loading Spinner */
         .loader {
             @apply w-8 h-8 border-4 border-t-sky-500 border-r-sky-500/30 border-b-sky-500/30 border-l-sky-500/30 rounded-full animate-spin;
+        }
+        /* Vertical Video Container Style */
+        .clean-video-wrapper {
+            width: 100%;
+            max-width: 280px; /* Thinner for a better vertical look */
+            aspect-ratio: 9 / 16; /* Strict vertical ratio */
+            margin: 0 auto;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 3px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            background: #000;
+            position: relative;
+        }
+        .clean-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures video fills the vertical space */
+            display: block;
         }
     </style>
     
@@ -96,10 +109,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body class="relative overflow-x-hidden">
 
-    <!-- Animated background -->
     <div id="background-animation" class="fixed top-0 left-0 w-full h-full -z-10"></div>
 
-    <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-lg">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold gradient-text">Bijoy Das</a>
@@ -117,8 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </svg>
             </button>
         </div>
-         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
+         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#about" class="block py-2 px-6 text-center hover:bg-gray-800">About</a>
             <a href="#services" class="block py-2 px-6 text-center hover:bg-gray-800">Services</a>
             <a href="#portfolio-samples" class="block py-2 px-6 text-center hover:bg-gray-800">Samples</a>
@@ -218,48 +228,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         </section>
 
-        <!-- Portfolio Samples Section -->
+        <!-- Work Samples Section -->
         <section id="portfolio-samples" class="py-20 lg:py-32 fade-in">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Work <span class="gradient-text">Samples</span></h2>
                 <p class="text-slate-300">Click on a card to see a gallery of my technical implementations.</p>
             </div>
-            <!-- Grid layout changed to 2x2 on medium and large screens -->
             <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Sample 1: FB CAPI -->
                 <div class="section-card clickable-gallery" data-gallery-id="fb-capi">
                      <img src="https://i.imgur.com/n93cPC6.jpeg" alt="Facebook CAPI Tracking Sample" class="rounded-lg mb-4 w-full h-48 object-cover border border-gray-700 pointer-events-none" />
                     <h3 class="text-xl font-bold mb-2 pointer-events-none">Facebook CAPI Tracking</h3>
                     <p class="text-slate-400 pointer-events-none">Server-side GTM setup for robust Facebook Conversion API tracking and event deduplication.</p>
                 </div>
-                <!-- Sample 2: Google Ads -->
                 <div class="section-card clickable-gallery" data-gallery-id="google-ads">
                      <img src="https://i.imgur.com/HCV0amm.jpeg" alt="Google Ads Conversion Tracking Sample" class="rounded-lg mb-4 w-full h-48 object-cover border border-gray-700 pointer-events-none" />
                     <h3 class="text-xl font-bold mb-2 pointer-events-none">Google Ads Conversion Tracking</h3>
                     <p class="text-slate-400 pointer-events-none">Implementing enhanced conversions and value-based bidding for maximum Google Ads ROAS.</p>
                 </div>
-                <!-- Sample 3: GA4 E-commerce -->
                 <div class="section-card clickable-gallery" data-gallery-id="ga4-ecom">
                      <img src="https://i.imgur.com/piEKrxv.png" alt="GA4 E-commerce Tracking Sample" class="rounded-lg mb-4 w-full h-48 object-cover border border-gray-700 pointer-events-none" />
                     <h3 class="text-xl font-bold mb-2 pointer-events-none">GA4 Ecommerce Tracking</h3>
                     <p class="text-slate-400 pointer-events-none">Detailed data layer and GTM configuration for full Enhanced Ecommerce reporting in GA4.</p>
                 </div>
-                <!-- UPDATED Sample 4: Form Tracking -->
                 <div class="section-card clickable-gallery" data-gallery-id="form-tracking">
                      <img src="https://i.imgur.com/KD6Vxd3.jpeg" alt="Form Tracking Sample" class="rounded-lg mb-4 w-full h-48 object-cover border border-gray-700 pointer-events-none" />
                     <h3 class="text-xl font-bold mb-2 pointer-events-none">Form Tracking (Calendly, Iframe)</h3>
                     <p class="text-slate-400 pointer-events-none">Advanced tracking for all form submissions, including Calendly, embedded Iframes, and standard contact forms.</p>
                 </div>
             </div>
-             <div class="mt-16 text-center max-w-3xl mx-auto">
-                <h3 class="text-2xl font-bold mb-4 gradient-text">Additional Tracking Expertise</h3>
-                <p class="text-slate-300 text-lg">
-                    I also specialize in multi-platform tracking for <span class="font-semibold text-white">LinkedIn, Snapchat, TikTok, Reddit,</span> and <span class="font-semibold text-white">Hotjar</span>. Additionally, I handle any kind of form tracking including <span class="font-semibold text-white">Calendly booking forms, contact forms,</span> and <span class="font-semibold text-white">Iframe forms</span>.
-                </p>
-            </div>
         </section>
 
-        <!-- AI-Powered Audit Section -->
+        <!-- AI Audit Section -->
         <section id="ai-audit" class="py-20 lg:py-32 fade-in">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Get an Instant <span class="gradient-text">AI-Powered Analysis</span></h2>
@@ -281,34 +280,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         </section>
         
-        <!-- Testimonials Section -->
+        <!-- Testimonials -->
         <section id="testimonials" class="py-20 lg:py-32 fade-in">
              <div class="text-center max-w-2xl mx-auto mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">What My Clients Say</h2>
             </div>
-            <div class="relative overflow-hidden max-w-3xl mx-auto">
+            <div class="relative overflow-hidden max-w-4xl mx-auto">
                 <div id="testimonial-slider" class="testimonial-slider">
+                    <!-- VERTICAL VIDEO REVIEW ITEM (Imgur Direct) -->
                     <div class="testimonial-item px-4">
-                        <div class="section-card text-center">
+                        <div class="section-card text-center flex flex-col items-center">
+                            <h3 class="text-xl font-bold text-sky-400 mb-6 uppercase tracking-wider">Client Video Review</h3>
+                            
+                            <!-- Professional Vertical Container -->
+                            <div class="clean-video-wrapper">
+                                <video controls playsinline poster="https://i.imgur.com/njdXBL1.png">
+                                    <!-- Imgur Direct MP4 Link -->
+                                    <source src="https://i.imgur.com/J2npcaN.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <p class="mt-6 text-slate-300 italic text-lg leading-relaxed max-w-lg">"Bijoy fixed our tracking issues that 3 other experts couldn't solve. The ROI impact was immediate."</p>
+                            <div class="mt-4 inline-block px-4 py-1 rounded-full bg-sky-500/10 border border-sky-500/20">
+                                <p class="font-bold text-sky-400">- Satisfied Client</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-item px-4">
+                        <div class="section-card text-center flex flex-col justify-center h-full min-h-[500px]">
                             <p class="text-lg italic text-slate-300 mb-4">"Bijoy helped us set up complex GA4 tracking we couldn’t figure out. Now we finally trust our numbers. His expertise is unmatched."</p>
                             <p class="font-bold text-sky-400">- Marketing Manager, SaaS Co.</p>
                         </div>
                     </div>
                     <div class="testimonial-item px-4">
-                        <div class="section-card text-center">
+                        <div class="section-card text-center flex flex-col justify-center h-full min-h-[500px]">
                             <p class="text-lg italic text-slate-300 mb-4">"Our ROAS on Facebook was dying. Bijoy's work on our CAPI setup was a game-changer. We've seen a consistent 3x return since."</p>
                             <p class="font-bold text-sky-400">- Founder, eCommerce Store</p>
                         </div>
                     </div>
                     <div class="testimonial-item px-4">
-                        <div class="section-card text-center">
+                        <div class="section-card text-center flex flex-col justify-center h-full min-h-[500px]">
                             <p class="text-lg italic text-slate-300 mb-4">"Incredibly professional and knowledgeable. Bijoy didn't just implement the tracking; he explained it in a way our team could understand."</p>
                             <p class="font-bold text-sky-400">- Agency Director, Lead-Gen Firm</p>
                         </div>
                     </div>
                 </div>
-                 <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800/50 p-2 rounded-full hover:bg-sky-500 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
-                <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800/50 p-2 rounded-full hover:bg-sky-500 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+                 <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800/50 p-2 rounded-full hover:bg-sky-500 transition-colors z-10"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+                <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800/50 p-2 rounded-full hover:bg-sky-500 transition-colors z-10"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
             </div>
         </section>
 
@@ -343,356 +363,353 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p class="text-slate-400 mb-4">Or reach out directly:</p>
                     <a href="mailto:bijoydashq@gmail.com" class="text-sky-400 hover:text-sky-300 text-lg font-semibold">bijoydashq@gmail.com</a>
                     <div class="flex justify-center space-x-6 mt-6">
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/Bijoydasbikram" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" title="Facebook"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61573981007083" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" title="Facebook"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"/></svg></a>
                         
-                        <!-- LinkedIn (UPDATED) -->
                         <a href="https://www.linkedin.com/in/bijoydas23" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" title="LinkedIn">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
 
-                        <!-- WhatsApp -->
                         <a href="https://wa.me/8801307482116" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" title="WhatsApp">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.46 3.48 1.28 4.94L2 22l5.3-1.38c1.37.75 2.92 1.18 4.57 1.18h.1c5.46 0 9.91-4.45 9.91-9.91C22 6.45 17.5 2 12.04 2zM17.1 15.28c-.19-.1-.44-.2-.64-.3s-1.18-.58-1.36-.65-.3-.1-.44.1-.51.65-.63.78-.23.15-.43.05c-.2-.1-.84-.31-1.6-.99-.59-.53-1-1.18-1.12-1.38s0-.3.1-.4c.1-.1.2-.25.3-.38s.15-.2.23-.34.13-.23.08-.43c-.05-.2-.44-1.05-.6-1.44s-.32-.33-.44-.33h-.4c-.1 0-.25.05-.38.25s-.51.5-.63 1.2c-.12.7.05 1.4.12 1.5.07.1.51.78 1.23 1.45.72.67 1.28 1.07 1.78 1.37.5.3.8.4.93.5.3.15.5.1.65-.05.15-.15.44-.5.59-.68.15-.18.28-.15.38-.1s.44.2.5.25.18.1.2.15.12.05.18.02.1-.03.1-.05c0 0-.12-.13-.18-.19z"/></svg>
                         </a>
                         
-                        <!-- Instagram -->
                         <a href="https://www.instagram.com/datadriven_bijoy/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" title="Instagram"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919 4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
                     </div>
                  </div>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer class="border-t border-gray-800/50">
-            <div class="container mx-auto px-6 py-6 text-center text-slate-400">
-                <p>&copy; 2025 Bijoy Das. All Rights Reserved.</p>
+    </main>
+    
+    <!-- AI Result Modal -->
+    <div id="ai-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold gradient-text">Your AI-Powered Analysis</h3>
+                <button id="close-ai-modal" class="text-slate-400 hover:text-white">&times;</button>
             </div>
-        </footer>
+            <div id="ai-result-content" class="prose prose-invert prose-p:text-slate-300 prose-headings:text-white prose-strong:text-white">
+                </div>
+             <div class="mt-8 text-center">
+                <a href="https://calendly.com/bijoydashq/30min" target="_blank" rel="noopener noreferrer" class="cta-button-primary">Book a Follow-Up Call</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="modal-overlay hidden">
+        <div id="gallery-modal-content" class="relative w-full max-w-4xl max-h-[90vh]">
+            <button id="close-gallery-modal" class="absolute -top-4 -right-4 md:top-0 md:-right-10 text-white text-4xl font-bold hover:text-sky-400 z-20">&times;</button>
+            <div class="relative flex items-center justify-center">
+                <img id="gallery-image" src="" alt="Work Sample" class="max-h-[80vh] w-auto mx-auto rounded-lg" />
+                <button id="gallery-prev" class="absolute top-1/2 left-0 md:-left-12 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-sky-500 transition-colors text-2xl leading-none">❮</button>
+                <button id="gallery-next" class="absolute top-1/2 right-0 md:-right-12 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-sky-500 transition-colors text-2xl leading-none">❯</button>
+            </div>
+            <div id="gallery-counter" class="text-center text-white mt-4 font-semibold"></div>
+        </div>
+    </div>
 
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- Sample Galleries Data ---
-            const sampleGalleries = {
-                'fb-capi': [
-                    'https://i.imgur.com/n93cPC6.jpeg',
-                    'https://i.imgur.com/xi9ZuJM.png',
-                    'https://i.imgur.com/cxPbB3S.jpeg',
-                    'https://i.imgur.com/me51A4w.jpeg',
-                    'https://i.imgur.com/0qfTpwv.jpeg',
-                    'https://i.imgur.com/osQ5Go8.png',
-                    'https://i.imgur.com/Z2ckoVr.png',
-                    'https://i.imgur.com/TjIizvy.jpeg',
-                    'https://i.imgur.com/kCJk86z.jpeg',
-                ],
-                'google-ads': [
-                    'https://i.imgur.com/HCV0amm.jpeg',
-                    'https://i.imgur.com/A4Ce0Qm.jpeg',
-                    'https://i.imgur.com/wmCDcE0.png',
-                    'https://i.imgur.com/yypCfu7.png',
-                    'https://i.imgur.com/rFa7qkR.jpeg',
-                    'https://i.imgur.com/u6819tD.jpeg',
-                    'https://i.imgur.com/tTCVCBk.png',
-                    'https://i.imgur.com/PQnegiI.png',
-                    'https://i.imgur.com/c6B32z3.png',
-                    'https://i.imgur.com/cTrbOc9.jpeg',
-                ],
-                'ga4-ecom': [
-                    'https://i.imgur.com/piEKrxv.png',
-                    'https://i.imgur.com/xAJYJ4Y.png',
-                    'https://i.imgur.com/gF6J4vb.png',
-                    'https://i.imgur.com/WPu0MLL.png',
-                    'https://i.imgur.com/sijAXnF.png',
-                ],
-                'form-tracking': [
-                    'https://i.imgur.com/KD6Vxd3.jpeg',
-                    'https://i.imgur.com/b7T99jh.jpeg',
-                    'https://i.imgur.com/mm2jVnx.jpeg',
-                ]
-            };
-            
-            // ... (Rest of the JavaScript code remains the same: Mobile menu, animation, slider, gallery modal, AI feature) ...
-            // Note for user: The rest of the JS code block is unchanged from the previous version.
-            
-            // --- Mobile Menu Toggle ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
 
-            // --- Fade-in on scroll animation ---
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
-                });
-            }, appearOptions);
-            faders.forEach(fader => appearOnScroll.observe(fader));
+    <footer class="border-t border-gray-800/50">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-400">
+            <p>&copy; 2025 Bijoy Das. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-            // --- Testimonial Slider ---
-            const slider = document.getElementById('testimonial-slider');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const items = document.querySelectorAll('.testimonial-item');
-            let testimonialCurrentIndex = 0;
-            const totalItems = items.length;
+    <script>
+    //<![CDATA[
+    document.addEventListener('DOMContentLoaded', function() {
+        const sampleGalleries = {
+            'fb-capi': [
+                'https://i.imgur.com/n93cPC6.jpeg',
+                'https://i.imgur.com/xi9ZuJM.png',
+                'https://i.imgur.com/cxPbB3S.jpeg',
+                'https://i.imgur.com/me51A4w.jpeg',
+                'https://i.imgur.com/0qfTpwv.jpeg',
+                'https://i.imgur.com/osQ5Go8.png',
+                'https://i.imgur.com/Z2ckoVr.png',
+                'https://i.imgur.com/TjIizvy.jpeg',
+                'https://i.imgur.com/kCJk86z.jpeg'
+            ],
+            'google-ads': [
+                'https://i.imgur.com/HCV0amm.jpeg',
+                'https://i.imgur.com/A4Ce0Qm.jpeg',
+                'https://i.imgur.com/wmCDcE0.png',
+                'https://i.imgur.com/yypCfu7.png',
+                'https://i.imgur.com/rFa7qkR.jpeg',
+                'https://i.imgur.com/u6819tD.jpeg',
+                'https://i.imgur.com/tTCVCBk.png',
+                'https://i.imgur.com/PQnegiI.png',
+                'https://i.imgur.com/c6B32z3.png',
+                'https://i.imgur.com/cTrbOc9.jpeg'
+            ],
+            'ga4-ecom': [
+                'https://i.imgur.com/piEKrxv.png',
+                'https://i.imgur.com/xAJYJ4Y.png',
+                'https://i.imgur.com/gF6J4vb.png',
+                'https://i.imgur.com/WPu0MLL.png',
+                'https://i.imgur.com/sijAXnF.png'
+            ],
+            'form-tracking': [
+                'https://i.imgur.com/KD6Vxd3.jpeg',
+                'https://i.imgur.com/b7T99jh.jpeg',
+                'https://i.imgur.com/mm2jVnx.jpeg'
+            ]
+        };
 
-            function updateSlider() {
-                if(slider) slider.style.transform = `translateX(-${testimonialCurrentIndex * 100}%)`;
-            }
-            if(nextBtn) nextBtn.addEventListener('click', () => {
-                testimonialCurrentIndex = (testimonialCurrentIndex + 1) % totalItems;
-                updateSlider();
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-            if(prevBtn) prevBtn.addEventListener('click', () => {
-                testimonialCurrentIndex = (testimonialCurrentIndex - 1 + totalItems) % totalItems;
-                updateSlider();
+        }
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                appearOnScroll.unobserve(entry.target);
             });
-            if(slider) {
-                setInterval(() => {
-                    testimonialCurrentIndex = (testimonialCurrentIndex + 1) % totalItems;
-                    updateSlider();
-                }, 5000);
-            }
-            
-            // --- Gallery Modal Logic ---
-            const galleryModal = document.getElementById('gallery-modal');
-            const galleryImage = document.getElementById('gallery-image');
-            const galleryCounter = document.getElementById('gallery-counter');
-            const closeGalleryBtn = document.getElementById('close-gallery-modal');
-            const galleryPrevBtn = document.getElementById('gallery-prev');
-            const galleryNextBtn = document.getElementById('gallery-next');
-            const galleryTriggers = document.querySelectorAll('.clickable-gallery');
-            
-            let currentGalleryImages = [];
-            let currentImageIndex = 0;
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
 
-            function openGallery(galleryId) {
-                if (!sampleGalleries[galleryId] || sampleGalleries[galleryId].length === 0) {
-                    console.error('Gallery not found or is empty:', galleryId);
-                    return;
-                }
-                currentGalleryImages = sampleGalleries[galleryId];
-                currentImageIndex = 0;
-                updateGalleryImage();
-                galleryModal.classList.remove('hidden');
-            }
+        const slider = document.getElementById('testimonial-slider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const items = document.querySelectorAll('.testimonial-item');
+        let testimonialCurrentIndex = 0;
+        const totalItems = items.length;
 
-            function closeGallery() {
-                galleryModal.classList.add('hidden');
-            }
+        function updateSlider() {
+            if(slider) slider.style.transform = "translateX(-" + (testimonialCurrentIndex * 100) + "%)";
+        }
+        if(nextBtn) nextBtn.addEventListener('click', () => {
+            testimonialCurrentIndex = (testimonialCurrentIndex + 1) % totalItems;
+            updateSlider();
+        });
+        if(prevBtn) prevBtn.addEventListener('click', () => {
+            testimonialCurrentIndex = (testimonialCurrentIndex - 1 + totalItems) % totalItems;
+            updateSlider();
+        });
+        
+        const galleryModal = document.getElementById('gallery-modal');
+        const galleryImage = document.getElementById('gallery-image');
+        const galleryCounter = document.getElementById('gallery-counter');
+        const closeGalleryBtn = document.getElementById('close-gallery-modal');
+        const galleryPrevBtn = document.getElementById('gallery-prev');
+        const galleryNextBtn = document.getElementById('gallery-next');
+        const galleryTriggers = document.querySelectorAll('.clickable-gallery');
+        
+        let currentGalleryImages = [];
+        let currentImageIndex = 0;
 
-            function updateGalleryImage() {
-                if (galleryImage) {
-                    galleryImage.src = currentGalleryImages[currentImageIndex];
-                }
-                if (galleryCounter) {
-                    galleryCounter.textContent = `${currentImageIndex + 1} / ${currentGalleryImages.length}`;
-                }
+        function openGallery(galleryId) {
+            if (!sampleGalleries[galleryId] || sampleGalleries[galleryId].length === 0) {
+                console.error('Gallery not found or is empty:', galleryId);
+                return;
             }
-            
-            function showNextImage() {
-                currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
-                updateGalleryImage();
-            }
+            currentGalleryImages = sampleGalleries[galleryId];
+            currentImageIndex = 0;
+            updateGalleryImage();
+            galleryModal.classList.remove('hidden');
+        }
 
-            function showPrevImage() {
-                currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
-                updateGalleryImage();
-            }
+        function closeGallery() {
+            galleryModal.classList.add('hidden');
+        }
 
-            galleryTriggers.forEach(trigger => {
-                trigger.addEventListener('click', () => {
-                    const galleryId = trigger.dataset.galleryId;
-                    openGallery(galleryId);
-                });
+        function updateGalleryImage() {
+            if (galleryImage) {
+                galleryImage.src = currentGalleryImages[currentImageIndex];
+            }
+            if (galleryCounter) {
+                galleryCounter.textContent = (currentImageIndex + 1) + ' / ' + currentGalleryImages.length;
+            }
+        }
+        
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+            updateGalleryImage();
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            updateGalleryImage();
+        }
+
+        galleryTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const galleryId = trigger.dataset.galleryId;
+                openGallery(galleryId);
             });
-            
-            if(closeGalleryBtn) closeGalleryBtn.addEventListener('click', closeGallery);
-            if(galleryNextBtn) galleryNextBtn.addEventListener('click', showNextImage);
-            if(galleryPrevBtn) galleryPrevBtn.addEventListener('click', showPrevImage);
-            
-            if(galleryModal) galleryModal.addEventListener('click', (e) => {
-                if(e.target === galleryModal) closeGallery();
-            });
+        });
+        
+        if(closeGalleryBtn) closeGalleryBtn.addEventListener('click', closeGallery);
+        if(galleryNextBtn) galleryNextBtn.addEventListener('click', showNextImage);
+        if(galleryPrevBtn) galleryPrevBtn.addEventListener('click', showPrevImage);
+        
+        if(galleryModal) galleryModal.addEventListener('click', (e) => {
+            if(e.target === galleryModal) closeGallery();
+        });
 
-            document.addEventListener('keydown', (e) => {
-                if (galleryModal && !galleryModal.classList.contains('hidden')) {
-                    if (e.key === 'ArrowRight') showNextImage();
-                    if (e.key === 'ArrowLeft') showPrevImage();
-                    if (e.key === 'Escape') closeGallery();
-                }
-            });
-
-            // --- AI Audit Feature ---
-            const generateBtn = document.getElementById('generate-ai-audit');
-            const promptInput = document.getElementById('ai-prompt-input');
-            const loader = document.getElementById('ai-loader');
-            const buttonContainer = document.getElementById('ai-button-container');
-            const aiModal = document.getElementById('ai-modal');
-            const closeModalBtn = document.getElementById('close-ai-modal');
-            const resultContainer = document.getElementById('ai-result-content');
-
-            if(generateBtn) generateBtn.addEventListener('click', async () => {
-                const userInput = promptInput.value.trim();
-                if (!userInput) {
-                    alert('Please describe your business and challenge.');
-                    return;
-                }
-
-                // Show loader, hide button
-                loader.classList.remove('hidden');
-                loader.classList.add('flex');
-                buttonContainer.classList.add('hidden');
-
-                const fullPrompt = `
-                    As an expert Digital Analytics and Tracking Specialist named Bijoy Das, provide a high-level analysis and a recommended action plan for the following client problem. Your tone should be confident, expert, and approachable. Structure your response with Markdown for clear formatting.
-
-                    The response should include:
-                    1.  **Initial Diagnosis:** A brief summary of the likely core issues based on their description.
-                    2.  **Key Areas for Investigation:** A bulleted list of specific things you would investigate first.
-                    3.  **Recommended Solutions:** A high-level overview of the solutions you would propose (e.g., "Implement Server-Side CAPI," "Conduct a full GA4 audit").
-                    4.  **Expected Outcomes:** A brief explanation of the business benefits of implementing these solutions (e.g., "Improved ROAS," "Data Clarity," "Higher Conversion Rates").
-
-                    Client's Problem: "${userInput}"
-                `;
-
-                try {
-                    let chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
-                    const payload = { contents: chatHistory };
-                    // NOTE: YOU MUST REPLACE 'YOUR_GEMINI_API_KEY_HERE' WITH YOUR ACTUAL KEY FOR GITHUB PAGES
-                    const apiKey = "YOUR_GEMINI_API_KEY_HERE"; 
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                    
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`API request failed with status ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        
-                        const rawText = result.candidates[0].content.parts[0].text;
-                        // Basic Markdown to HTML conversion
-                        let htmlResult = rawText
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-                            .replace(/\*(.*?)\*/g, '<em>$1</em>')       // Italics
-                            .replace(/^(#{1,6})\s*(.*)/gm, (match, hashes, content) => `<h${hashes.length + 2} class="font-bold text-xl mt-4 mb-2">${content}</h${hashes.length + 2}>`) // Headers
-                            .replace(/^- (.*)/gm, '<li class="ml-4 list-disc">$1</li>') // List items
-                            .replace(/(<ul>\s*(<li>.*<\/li>)\s*<\/ul>)/gs, '$1') // Avoid double wrapping
-                            .replace(/((<li.*<\/li>\s*)+)/gs, '<ul>$1</ul>') // Wrap lists
-                            .replace(/\n/g, '<br />');
-
-                        resultContainer.innerHTML = htmlResult;
-                        aiModal.classList.remove('hidden');
-                    } else {
-                        resultContainer.innerHTML = '<p>Sorry, the AI could not generate a response at this time. Please try again later.</p>';
-                        aiModal.classList.remove('hidden');
-                    }
-
-                } catch (error) {
-                    console.error("Error calling Gemini API:", error);
-                    resultContainer.innerHTML = `<p>An error occurred while generating the analysis. Please check the console for details and try again.</p><p class="text-red-400 text-sm mt-2">${error.message}</p>`;
-                    aiModal.classList.remove('hidden');
-                } finally {
-                    // Hide loader, show button
-                    loader.classList.add('hidden');
-                    loader.classList.remove('flex');
-                    buttonContainer.classList.remove('hidden');
-                }
-            });
-
-            if(closeModalBtn) closeModalBtn.addEventListener('click', () => {
-                aiModal.classList.add('hidden');
-            });
-
-            if(aiModal) aiModal.addEventListener('click', (e) => {
-                if (e.target === aiModal) {
-                    aiModal.classList.add('hidden');
-                }
-            });
-
-            // --- Simple background particle animation ---
-            const canvas = document.createElement('canvas');
-            const container = document.getElementById('background-animation');
-            let ctx = null;
-            if (container) {
-                container.appendChild(canvas);
-                ctx = canvas.getContext('2d');
-            }
-            let particles = [];
-            
-            function resizeCanvas() {
-                if (!canvas) return;
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                initParticles();
-            }
-            
-            window.addEventListener('resize', resizeCanvas);
-            
-            class Particle {
-                constructor(x, y, radius, color, velocity) {
-                    this.x = x; this.y = y; this.radius = radius; this.color = color; this.velocity = velocity;
-                    this.alpha = Math.random() * 0.2 + 0.05;
-                }
-                draw() {
-                    if(!ctx) return;
-                    ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-                    ctx.fillStyle = this.color; ctx.fill(); ctx.restore();
-                }
-                update() {
-                    this.x += this.velocity.x; this.y += this.velocity.y;
-                    if (canvas && (this.x - this.radius < 0 || this.x + this.radius > canvas.width)) this.velocity.x = -this.velocity.x;
-                    if (canvas && (this.y - this.radius < 0 || this.y + this.radius > canvas.height)) this.velocity.y = -this.velocity.y;
-                    this.draw();
-                }
-            }
-            
-            function initParticles() {
-                if (!canvas) return;
-                particles = [];
-                const particleCount = Math.floor(canvas.width / 50);
-                const colors = ['#38bdf8', '#34d399'];
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const radius = Math.random() * 2 + 1;
-                    const x = Math.random() * (canvas.width - radius * 2) + radius;
-                    const y = Math.random() * (canvas.height - radius * 2) + radius;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    const velocity = { x: (Math.random() - 0.5) * 0.3, y: (Math.random() - 0.5) * 0.3 };
-                    particles.push(new Particle(x, y, radius, color, velocity));
-                }
-            }
-            
-            function animate() {
-                requestAnimationFrame(animate);
-                if(ctx && canvas) {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    particles.forEach(particle => particle.update());
-                }
-            }
-            
-            if (container) {
-                resizeCanvas();
-                animate();
+        document.addEventListener('keydown', (e) => {
+            if (galleryModal && !galleryModal.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') showNextImage();
+                if (e.key === 'ArrowLeft') showPrevImage();
+                if (e.key === 'Escape') closeGallery();
             }
         });
-        </script>
+
+        const generateBtn = document.getElementById('generate-ai-audit');
+        const promptInput = document.getElementById('ai-prompt-input');
+        const loader = document.getElementById('ai-loader');
+        const buttonContainer = document.getElementById('ai-button-container');
+        const aiModal = document.getElementById('ai-modal');
+        const closeModalBtn = document.getElementById('close-ai-modal');
+        const resultContainer = document.getElementById('ai-result-content');
+
+        if(generateBtn) generateBtn.addEventListener('click', async () => {
+            const userInput = promptInput.value.trim();
+            if (!userInput) {
+                alert('Please describe your business and challenge.');
+                return;
+            }
+
+            loader.classList.remove('hidden');
+            loader.classList.add('flex');
+            buttonContainer.classList.add('hidden');
+
+            const fullPrompt = "As an expert Digital Analytics and Tracking Specialist named Bijoy Das, provide a high-level analysis and a recommended action plan for the following client problem. Your tone should be confident, expert, and approachable. Structure your response with Markdown for clear formatting.\n\nThe response should include:\n1. Initial Diagnosis\n2. Key Areas for Investigation\n3. Recommended Solutions\n4. Expected Outcomes\n\nClient's Problem: " + userInput;
+
+            try {
+                let chatHistory = [{ role: "user", parts: [{ text: fullPrompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = "AIzaSyCs9gRtNgxyA3bXhO_YVaC_oNPfjqnzKb4"; 
+                const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error("API request failed with status " + response.status);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    
+                    const rawText = result.candidates[0].content.parts[0].text;
+                    let htmlResult = rawText
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                        .replace(/^(#{1,6})\s*(.*)/gm, (match, hashes, content) => '<h' + (hashes.length + 2) + ' class="font-bold text-xl mt-4 mb-2">' + content + '</h' + (hashes.length + 2) + '>')
+                        .replace(/^- (.*)/gm, '<li class="ml-4 list-disc">$1</li>')
+                        .replace(/(<ul>\s*(<li>.*<\/li>)\s*<\/ul>)/gs, '$1')
+                        .replace(/((<li.*<\/li>\s*)+)/gs, '<ul>$1</ul>')
+                        .replace(/\n/g, '<br />');
+
+                    resultContainer.innerHTML = htmlResult;
+                    aiModal.classList.remove('hidden');
+                } else {
+                    resultContainer.innerHTML = '<p>Sorry, the AI could not generate a response at this time. Please try again later.</p>';
+                    aiModal.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                resultContainer.innerHTML = '<p>An error occurred while generating the analysis. Please check the console for details and try again.</p><p class="text-red-400 text-sm mt-2">' + error.message + '</p>';
+                aiModal.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+                loader.classList.remove('flex');
+                buttonContainer.classList.remove('hidden');
+            }
+        });
+
+        if(closeModalBtn) closeModalBtn.addEventListener('click', () => {
+            aiModal.classList.add('hidden');
+        });
+
+        if(aiModal) aiModal.addEventListener('click', (e) => {
+            if (e.target === aiModal) {
+                aiModal.classList.add('hidden');
+            }
+        });
+
+        const canvas = document.createElement('canvas');
+        const container = document.getElementById('background-animation');
+        let ctx = null;
+        if (container) {
+            container.appendChild(canvas);
+            ctx = canvas.getContext('2d');
+        }
+        let particles = [];
+        
+        function resizeCanvas() {
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        
+        class Particle {
+            constructor(x, y, radius, color, velocity) {
+                this.x = x; this.y = y; this.radius = radius; this.color = color; this.velocity = velocity;
+                this.alpha = Math.random() * 0.2 + 0.05;
+            }
+            draw() {
+                if(!ctx) return;
+                ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color; ctx.fill(); ctx.restore();
+            }
+            update() {
+                this.x += this.velocity.x; this.y += this.velocity.y;
+                if (canvas && (this.x - this.radius < 0 || this.x + this.radius > canvas.width)) this.velocity.x = -this.velocity.x;
+                if (canvas && (this.y - this.radius < 0 || this.y + this.radius > canvas.height)) this.velocity.y = -this.velocity.y;
+                this.draw();
+            }
+        }
+        
+        function initParticles() {
+            if (!canvas) return;
+            particles = [];
+            const particleCount = Math.floor(canvas.width / 50);
+            const colors = ['#38bdf8', '#34d399'];
+            
+            for (let i = 0; i < particleCount; i++) {
+                const radius = Math.random() * 2 + 1;
+                const x = Math.random() * (canvas.width - radius * 2) + radius;
+                const y = Math.random() * (canvas.height - radius * 2) + radius;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const velocity = { x: (Math.random() - 0.5) * 0.3, y: (Math.random() - 0.5) * 0.3 };
+                particles.push(new Particle(x, y, radius, color, velocity));
+            }
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            if(ctx && canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(particle => particle.update());
+            }
+        }
+        
+        if (container) {
+            resizeCanvas();
+            animate();
+        }
+    });
+    //]]>
+    </script>
 </body>
 </html>
